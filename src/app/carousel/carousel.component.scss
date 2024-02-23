@@ -1,0 +1,48 @@
+.carousel {
+  position: relative;
+  /* ... other styles ... */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display:block;
+  padding: 10px;
+  font-size: 24px;
+  z-index: 10;
+}
+
+@media screen and (max-width: 600px) {
+  .arrow {
+      font-size: 18px;
+      padding: 5px;
+  }
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+/* Optional: Add hover effect for arrows */
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-item {
+  position:relative;
+   display: none;
+  /* ... other styles ... */
+}
+
+.carousel-item.active {
+  display: block;
+}

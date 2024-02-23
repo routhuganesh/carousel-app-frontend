@@ -1,0 +1,29 @@
+<!-- Carousel -->
+<h1>Angular Carousel</h1>
+
+<!-- Left arrow -->
+<div class="carousel">
+  <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === currentSlideIndex">
+    <button class="arrow left-arrow" (click)="previousSlide()" *ngIf="slides.length > 1">&#10094;</button>
+    <img [src]="slide.imageUrl" alt="Slide image">
+    <div class="caption">{{ slide.caption }}</div>
+    <button class="arrow right-arrow" (click)="nextSlide()" *ngIf="slides.length > 1">&#10095;</button>
+  </div>
+</div>
+
+
+<h4>Added Slides</h4>
+<!-- List of Slides -->
+<div class="slides-list">
+  <div *ngFor="let slide of slides; let i = index" class="slide-item">
+    <span>{{ slide.caption }}</span>
+    <button (click)="deleteSlide(i)">Delete</button>
+  </div>
+</div>
+
+<!-- Add Slide Form -->
+<form (ngSubmit)="addSlide()">
+  <input type="text" [(ngModel)]="newSlide.imageUrl" name="imageUrl" placeholder="Image URL">
+  <input type="text" [(ngModel)]="newSlide.caption" name="caption" placeholder="Caption">
+  <button type="submit">Add Slide</button>
+</form>
