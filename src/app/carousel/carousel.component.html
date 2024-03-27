@@ -1,29 +1,51 @@
-<!-- Carousel -->
+<!-- Main heading for the Carousel -->
 <h1>Angular Carousel</h1>
 
-<!-- Left arrow -->
+<!-- Carousel container -->
 <div class="carousel">
+  <!-- Loop through each slide in the slides array -->
   <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === currentSlideIndex">
+    <!-- Left navigation arrow; only shown if there is more than one slide -->
     <button class="arrow left-arrow" (click)="previousSlide()" *ngIf="slides.length > 1">&#10094;</button>
+    <!-- Slide image -->
     <img [src]="slide.imageUrl" alt="Slide image">
+    <!-- Slide caption -->
     <div class="caption">{{ slide.caption }}</div>
+    <!-- Right navigation arrow; only shown if there is more than one slide -->
     <button class="arrow right-arrow" (click)="nextSlide()" *ngIf="slides.length > 1">&#10095;</button>
   </div>
-</div>
-
-
-<h4>Added Slides</h4>
-<!-- List of Slides -->
-<div class="slides-list">
-  <div *ngFor="let slide of slides; let i = index" class="slide-item">
-    <span>{{ slide.caption }}</span>
-    <button (click)="deleteSlide(i)">Delete</button>
+  <!-- Carousel indicators; clicking an indicator navigates to the corresponding slide -->
+  <div class="carousel-indicators">
+    <span *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)" [class.active]="i === currentSlideIndex" class="dash"></span>
   </div>
 </div>
 
-<!-- Add Slide Form -->
+<!-- Section heading for the added slides list -->
+<h4>Added Slides</h4>
+<!-- Container for the list of slides -->
+<div class="slides-list">
+  <div *ngFor="let slide of slides; let i = index" class="slide-item">
+    <ul>
+      <li>
+        <!-- Display slide caption -->
+        <span class="slide-caption">{{ slide.caption}}</span>
+        <!-- Delete icon for removing the slide; triggers deleteSlide function on click -->
+        <span class="material-icons delete-icon" (click)="deleteSlide(i)">delete_outline</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section heading for adding a new slide -->
+<h4>Add New Slide</h4>
+<!-- Form for adding a new slide -->
 <form (ngSubmit)="addSlide()">
+  <!-- Input field for the slide image URL -->
+  <label>Image Url</label>
   <input type="text" [(ngModel)]="newSlide.imageUrl" name="imageUrl" placeholder="Image URL">
+  <!-- Input field for the slide caption -->
+  <label>Slide caption</label>
   <input type="text" [(ngModel)]="newSlide.caption" name="caption" placeholder="Caption">
+  <!-- Submit button for the form -->
   <button type="submit">Add Slide</button>
 </form>

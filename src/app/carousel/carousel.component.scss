@@ -1,8 +1,35 @@
+/* Base styling for the carousel container */
 .carousel {
+  width: 800px; /* Adjusted width; remember this overrides any previous width declarations */
+  height: 500px; /* Adjusted height; this will be the used height */
   position: relative;
-  /* ... other styles ... */
+  overflow: hidden; /* Prevents any overflow from the images */
+  margin: 0 auto; /* Centers the carousel on the page */
 }
 
+/* Styling for carousel items */
+.carousel-item {
+  position: absolute; /* Positions items absolutely within the carousel */
+  width: 100%; /* Ensures each item stretches to full container width */
+  height: 100%; /* Ensures each item stretches to full container height */
+  top: 0;
+  left: 0;
+  display: none; /* Hides all items by default */
+}
+
+/* Shows the active carousel item */
+.carousel-item.active {
+  display: block; /* Only the active item is shown */
+}
+
+/* Styling for the images within carousel items */
+.carousel-item img {
+  width: 100%; /* Full width of its parent */
+  height: 100%; /* Full height of its parent */
+  object-fit: cover; /* Ensures the image covers the available space */
+}
+
+/* Styling for navigation arrows */
 .arrow {
   position: absolute;
   top: 50%;
@@ -11,19 +38,13 @@
   color: white;
   border: none;
   cursor: pointer;
-  display:block;
+  display: block;
   padding: 10px;
-  font-size: 24px;
+  font-size: 24px; /* Default font size */
   z-index: 10;
 }
 
-@media screen and (max-width: 600px) {
-  .arrow {
-      font-size: 18px;
-      padding: 5px;
-  }
-}
-
+/* Left and right arrow positioning */
 .left-arrow {
   left: 0;
 }
@@ -32,17 +53,78 @@
   right: 0;
 }
 
-/* Optional: Add hover effect for arrows */
+/* Hover effect for arrows */
 .arrow:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.carousel-item {
-  position:relative;
-   display: none;
-  /* ... other styles ... */
+/* Adjusts arrow size and padding on smaller screens */
+@media screen and (max-width: 600px) {
+  .arrow {
+    font-size: 18px;
+    padding: 5px;
+  }
 }
 
-.carousel-item.active {
+/* Styling for the caption within carousel items */
+.caption {
+  position: absolute;
+  bottom: 50px; /* Positions caption above the bottom of the carousel */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  text-align: center;
+  z-index: 12; /* Ensures visibility above images */
+}
+
+/* Styling for carousel indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px; /* Positions indicators at the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15; /* Ensures visibility above captions */
+}
+
+/* Styling for individual indicator dashes */
+.dash {
+  height: 2px;
+  width: 20px;
+  margin: 0 3px;
+  background-color: #bbb; /* Default state */
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+/* Highlighting the active indicator */
+.dash.active {
+  background-color: #717171; /* Active state */
+}
+
+/* Adjusts padding for elements aligned with the carousel */
+h1, h4, .slides-list, form {
+  padding-left: calc((100% - 800px) / 2);
+}
+
+/* Styling for delete icons */
+.delete-icon {
+  cursor: pointer;
+  color: #050505;
+  margin-left: 10px;
+}
+
+/* General styling for labels and buttons */
+label {
   display: block;
+  margin-bottom: 5px;
+}
+
+button {
+  display: block;
+  background-color: rgb(77, 77, 160);
+  color: white;
+  margin-top: 5px;
 }
