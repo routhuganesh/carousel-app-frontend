@@ -28,14 +28,12 @@
   height: 100%; /* Full height of its parent */
   object-fit: cover; /* Ensures the image covers the available space */
 }
-
-/* Styling for navigation arrows */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: #80808080;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   display: block;
@@ -48,22 +46,13 @@
 .left-arrow {
   left: 0;
 }
-
 .right-arrow {
   right: 0;
 }
 
 /* Hover effect for arrows */
 .arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Adjusts arrow size and padding on smaller screens */
-@media screen and (max-width: 600px) {
-  .arrow {
-    font-size: 18px;
-    padding: 5px;
-  }
+  background-color: #808080cc;
 }
 
 /* Styling for the caption within carousel items */
@@ -72,8 +61,7 @@
   bottom: 50px; /* Positions caption above the bottom of the carousel */
   left: 50%;
   transform: translateX(-50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
   padding: 5px 10px;
   text-align: center;
   z-index: 12; /* Ensures visibility above images */
@@ -93,7 +81,7 @@
   height: 2px;
   width: 20px;
   margin: 0 3px;
-  background-color: #bbb; /* Default state */
+  background-color: #bbbbbb; /* Default state */
   display: inline-block;
   cursor: pointer;
   border-radius: 1px;
@@ -105,7 +93,10 @@
 }
 
 /* Adjusts padding for elements aligned with the carousel */
-h1, h4, .slides-list, form {
+h1,
+h4,
+.slides-list,
+form {
   padding-left: calc((100% - 800px) / 2);
 }
 
@@ -121,10 +112,70 @@ label {
   display: block;
   margin-bottom: 5px;
 }
-
 button {
   display: block;
-  background-color: rgb(77, 77, 160);
-  color: white;
+  background-color: #0000ff;
+  color: #ffffff;
   margin-top: 5px;
+}
+
+/* Apply Arial font to relevant elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+button,
+input,
+textarea {
+  font-family: Arial, sans-serif;
+}
+.carousel-caption,
+.slide-title {
+  font-family: Arial, sans-serif;
+}
+
+.slides-list ul {
+  margin: 0; /* Sets a top and bottom margin of 4 pixels */
+}
+h4 {
+  margin: 5px;
+}
+input[type="text"] {
+  font-size: 16px; /* Adjust the font size as desired */
+  padding: 8px; /* Add some padding for better visibility */
+  border: 1px solid #cccccc; /* Add a border for clarity */
+  border-radius: 4px; /* Add some rounded corners for a modern look */
+  width: 600px; /* Make the input fields span the full width */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+button[type="submit"] {
+  background-color: #0000ff; /* Bluish color */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+button[type="submit"]:hover {
+  background-color: #3e3e8c; /* Slightly darker color on hover */
+}
+.no-slides-message {
+  text-align: center;
+  margin-top: 200px;
+}
+@media screen and (max-width: 768px) {
+  .carousel-item .arrow {
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .carousel-indicators .dash {
+    width: 8px;
+    height: 8px;
+  }
 }
